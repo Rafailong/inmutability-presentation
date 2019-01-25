@@ -1,0 +1,5 @@
+# This is here to prevent stackoverflows during compilation for certain
+# Shapeless implicit resolution operations.  So far, the place we have seen
+# this happen with vyze.funding.testing.FundingApiBehaviors which uses DiffShow
+# which, in turn, causes the Shapeless lookup issue.
+-Xss8m
