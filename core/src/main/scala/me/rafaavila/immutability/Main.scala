@@ -1,16 +1,9 @@
 package me.rafaavila.immutability
 
 import reftree.core._
-import reftree.render.{Renderer, RenderingOptions}
 import reftree.diagram.Diagram
-import java.nio.file.Paths
 
-object Main extends App {
-  val renderer = Renderer(
-    renderingOptions = RenderingOptions(density = 75),
-    directory = Paths.get("slides", "overview")
-  )
-
+object Main extends App with MyRenderer {
   import renderer._
 
   case class Person(firstName: String, age: Int)
@@ -19,8 +12,6 @@ object Main extends App {
   case class Tree(size: Int, value: Int, children: List[Tree])
   implicit def treeInstance: ToRefTree[Tree] = ToRefTree[Tree] { tree: Tree =>
     RefTree.Ref(tree, Seq(
-      // display the size as a hexadecimal number (why not?)
-//      RefTree.Val(tree.size).withHint(RefTree.Val.Hex).toField.withName("s"),
       RefTree.Val.formatted(tree.size)(_.toHexString).toField.withName("s"),
 
       // highlight the value
