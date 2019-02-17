@@ -1,0 +1,53 @@
+pageSize = 10
+total    = 25
+
+if (total <= 0) None
+else if (left <= 0 && leftAbs > 0) Some((0, Page(0, total)))
+else Some((leftAbs, Page(leftAbs, total)))
+
+0
+total                 = 25
+left = 25 - 10        = 15
+leftAbs = Math.abs(5) = 15
+
+if (25 <= 0) None
+else if (15 <= 0 && 15 > 0) Some((0, Page(0, 25)))
+else Some((15, Page(15, 25)))
+
+Some((15, Page(15, 25)))
+//-----------------------------------
+
+1
+total                 = 15
+left = 15 - 10        = 5
+leftAbs = Math.abs(5) = 5
+
+if (15 <= 0) None
+else if (5 <= 0 && 5 > 0) Some((0, Page(0, 15)))
+else Some((5, Page(5, 15)))
+
+Some((5, Page(5, 15)))
+// ---------------------------------
+
+2
+total         = 5
+left = 5 - 10 = -5
+leftAbs       = 5
+
+if (5 <= 0) None
+else if (-5 <= 0 && 5 > 0) Some((0, Page(0, 5)))
+else Some((5, Page(5, 5)))
+
+Some((0, Page(0, 5)))
+// ---------------------------------
+
+3
+total         = 0
+left = 0 - 10 = -10
+leftAbs       = 10
+
+if (0 <= 0) None
+else if (-10 <= 0 && 10 > 0) Some((0, Page(0, 0)))
+else Some((10, Page(10, 0)))
+
+None
